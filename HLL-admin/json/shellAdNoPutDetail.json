@@ -1,0 +1,36 @@
+
+{
+	"code": 0,
+	"msg": "",
+	"count": 1000,
+	"data": [{
+		"id": 10006,
+		"deviceNum": "000000",
+		"deviceType": "智能快递柜",
+		"position": "山东省济南市历下区舜泰广场13号楼",
+		"putStatic": "未投放"
+	},
+	{
+		"id": 10007,
+		"deviceNum": "000000",
+		"deviceType": "智能快递柜",
+		"position": "山东省济南市历下区舜泰广场11号楼",
+		"putStatic": "未投放"
+	},
+	{
+		"id": 10008,
+		"deviceNum": "000000",
+		"deviceType": "智能快递柜",
+		"position": "山东省济南市历下区汉峪金谷7号楼",
+		"putStatic": "未投放"
+	},
+	{
+		"id": 10009,
+		"deviceNum": "000000",
+		"deviceType": "智能快递柜",
+		"position": "山东省济南市历下区舜泰广场8号楼",
+		"putStatic": "未投放"
+	}
+	
+	]
+}

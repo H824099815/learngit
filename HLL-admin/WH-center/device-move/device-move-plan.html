@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>移动计划</title>
+		<link rel="stylesheet" href="../../css/reset.css">
+		<link rel="stylesheet" href="../../layui/css/layui.css">
+		<link rel="stylesheet" href="../../css/public.css">
+		<link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.css">
+		<style>
+			body {
+				box-sizing: border-box;
+				/* overflow: auto; */
+			}
+			.layui-layer-content {
+				box-sizing: border-box;
+				padding: 10px;
+			}
+			.layui-layer-content>div {
+				width: 100%;
+				margin-bottom: 20px;
+			}
+			.layui-layer-content>div>span {
+				margin-right: 10px;
+				width: 65px;
+			}
+			.layui-layer-content>div>* {
+				display: inline-block;
+			}
+			.layer-device-name {
+				
+			}
+			.layer-device-name>p {
+				font-size: 22px
+			}
+			
+			
+			
+			.layer-device-info {
+				width: 100%;
+			}
+			.layer-device-info>h3 {
+				font-weight: bold;
+				font-size: 24px;
+				margin-bottom: 20px;
+			}
+			.layer-device-info>div {
+				width: 50%;
+				display: inline-block;
+				margin-bottom: 20px;
+			}
+			.layer-device-info>div>* {
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+	<!-- *@author 侯成昊
+		*@company 豆趣（山东）科技有限公司
+		*@E-mail 824099815@qq.com
+		*@QQ 824099815
+	-->
+	
+		<table id="target" lay-filter="target"></table>
+		
+		<script src="../../js/jQuery-3.4.0.js"></script>
+		<script src="../../js/jquery.cookie.js"></script>
+		<script src="../../layui/layui.js"></script>
+		<script type="text/html" id="backBtn">
+			<a class="layui-btn layui-btn-xs " lay-event="detail">详情</a>
+			<a class="layui-btn layui-btn-xs " lay-event="move">移动</a>
+		</script>
+		<script>
+			layui.config({
+				base: '../../mods/'
+				, version: '1.0'
+			});
+			
+			
+			layui.use(['element', 'laypage', 'layer', 'form', 'laydate', 'table', 'upload','layarea'], function() {
+				var $ = layui.jquery,
+					element = layui.element,
+					laypage = layui.laypage,
+					form = layui.form,
+					layer = layui.layer,
+					table = layui.table,
+					upload = layui.upload,
+					layarea = layui.layarea,
+					laydate = layui.laydate;
+
+				
+				//渲染表格
+				table.render({
+					elem: '#target',
+					page: true,
+					height: 'full-22',
+					url: '../../json/deviceMovePlan.json',
+					request: {
+						pageName: 'pageNum' //页码的参数名称，默认：page
+							,
+						limitName: 'pageSize' //每页数据量的参数名，默认：limit
+					}
+				
+						,
+					cols: [
+						[ {
+								field: 'num',
+								title: '设备编号',
+								align: 'center',
+								minWidth: 100
+							},{
+								field: 'name',
+								title: '设备名称',
+								align: 'center',
+								minWidth: 130
+							} //width 支持：数字、百分比和不填写。你还可以通过 minWidth 参数局部定义当前单元格的最小宽度，layui 2.2.1 新增
+							, {
+								field: 'position',
+								title: '安装位置',
+								align: 'center',
+								minWidth: 100
+							},{
+								field: 'amount',
+								title: '箱格数量（大/中/小）',
+								align: 'center',
+								minWidth: 130
+							}, {
+								field: 'firm',
+								title: '设备厂商',
+								align: 'center',
+								minWidth: 100
+							}
+							,{
+								field: 'installOne',
+								title: '安装人',
+								align: 'center',
+								minWidth: 100
+							} //单元格内容水平居中
+							,{
+								field: 'chargeOne',
+								title: '负责人',
+								align: 'center',
+								minWidth: 100
+							} //单元格内容水平居中
+							,{
+								field: 'installTime',
+								title: '安装时间',
+								align: 'center',
+								minWidth: 100
+							},
+							{
+								align: 'center',
+								title: '操作',
+								toolbar: '#backBtn',
+								fixed: 'right',
+								minWidth: 130
+							} //单元格内容水平居中
+							
+						],
+					]
+					
+				});
+
+				
+				table.on('tool(target)', function(obj){
+					var data = obj.data;
+					if(obj.event === 'detail'){
+						layer.open({
+							type: 1,
+							area: ['50%', '70%'], //宽高
+							title: "设备详情",
+							content: '<div class="layer-device-name"><span>设备名称:</span><p>' + data.name + '</p></div><div class="layer-device-position"><span>设备位置:</span><p>' + data.position + '</p></div><div class="layer-device-num"><span>设备编号:</span><p>' + data.num + '</p></div><div class="layer-device-amount"><span>箱格数量:</span><p>' + data.amount + '</p></div><div class="layer-device-firm"><span>设备厂商:</span><p>' + data.firm + '</p></div><div class="layer-device-firm"><span>设备厂商:</span><p>' + data.firm + '</p></div><div class="layer-device-installOne"><span>安装人员:</span><p>' + data.installOne + '</p></div><div class="layer-device-chargeOne"><span>负责人:</span><p>' + data.chargeOne + '</p></div><div class="layer-device-installTime"><span>安装时间:</span><p>' + data.installTime + '</p></div>'
+						});
+						form.render();
+					} else {
+						if(obj.event === 'move') {
+							layer.open({
+								type: 1,
+								area: ['70%', '70%'], //宽高
+								content: '<form class="layui-form" action="" lay-filter="add-version"><div class="layer-device-info"><h3>' + data.name + '</h3><div class="layer-device-num"><span>设备编号：</span><p>' + data.num + '</p></div><div><span>设备位置：</span><p>' + data.position + '</p></div></div><div class="layui-form-item" id="area-picker"><div class="layui-form-label">移动地址</div><div class="layui-input-inline"><select name="province" class="province-selector" data-value="山东省" lay-filter="province-1"><option value="">请选择省</option></select></div><div class="layui-input-inline"><select name="city" class="city-selector" data-value="济南市" lay-filter="city-1"><option value="">请选择市</option></select></div><div class="layui-input-inline"><select name="county" class="county-selector" data-value="历下区" lay-filter="county-1"><option value="">请选择区</option></select></div></div><div class="layui-form-item"><label class="layui-form-label">详细位置</label><div class="layui-input-block"><input type="text" class="layui-input"  placeholder="请填写详细位置"></div></div><div class="layui-form-item"><label class="layui-form-label">完成时间</label><div class="layui-input-block"><input type="text" class="layui-input" id="finishTime" placeholder="请选择完成时间"></div></div><div class="layui-form-item"><label class="layui-form-label">指派给</label><div class="layui-input-block"><select name="modules" lay-verify="required" lay-search=""><option value="">直接选择或搜索选择</option><option value="1">张三</option><option value="2">李四</option><option value="3">王五</option><option value="4">马六</option></select></div></div><div class="layui-form-item"><div class="layui-input-block"><button type="submit" class="layui-btn" id="uploadApk" lay-submit="" lay-filter="submit">立即提交</button><button type="reset" class="layui-btn layui-btn-primary">重置</button></div></div></from>'
+							});
+							form.render();
+							laydate.render({
+							  elem: '#finishTime'
+							  ,type: 'datetime'
+							});
+							layarea.render({
+								elem: '#area-picker',
+								change: function (res) {
+									//选择结果
+									console.log(res);
+							    }
+							});
+						} else {
+							
+						}
+					}
+				});
+
+
+
+
+
+			});
+		</script>
+	</body>
+</html>

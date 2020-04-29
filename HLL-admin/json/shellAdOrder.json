@@ -1,0 +1,62 @@
+{
+	"code": 0,
+	"msg": "",
+	"count": 1000,
+	"data": [{
+		"id": 10000,
+		"deviceType": "智能快递柜",
+		"adType": "核心广告",
+		"photo": "../../images/ad219.png",
+		"license": "../../images/yyzz.jpg",
+		"deviceCounts": 100,
+		"personInCharge": "张三",
+		"submitTime": "2020/4/21/13:00:00",
+		"static": "进行中"
+	},
+	{
+		"id": 10001,
+		"deviceType": "智能快递柜",
+		"adType": "重点广告",
+		"photo": "../../images/ad219.png",
+		"license": "../../images/yyzz.jpg",
+		"deviceCounts": 100,
+		"personInCharge": "李四",
+		"submitTime": "2020/4/21/13:00:00",
+		"static": "进行中"
+	},
+	{
+		"id": 10002,
+		"deviceType": "智能快递柜",
+		"adType": "重点广告",
+		"photo": "../../images/ad219.png",
+		"license": "../../images/yyzz.jpg",
+		"deviceCounts": 100,
+		"personInCharge": "王五",
+		"submitTime": "2020/4/21/13:00:00",
+		"static": "进行中"
+	},
+	{
+		"id": 10003,
+		"deviceType": "智能快递柜",
+		"adType": "重点广告",
+		"photo": "../../images/ad219.png",
+		"license": "../../images/yyzz.jpg",
+		"deviceCounts": 100,
+		"personInCharge": "李四",
+		"submitTime": "2020/4/21/13:00:00",
+		"static": "进行中"
+	},
+	{
+		"id": 10004,
+		"deviceType": "智能快递柜",
+		"adType": "重点广告",
+		"photo": "../../images/ad219.png",
+		"license": "../../images/yyzz.jpg",
+		"deviceCounts": 100,
+		"personInCharge": "李四",
+		"submitTime": "2020/4/21/13:00:00",
+		"static": "进行中"
+	}
+	
+	]
+}

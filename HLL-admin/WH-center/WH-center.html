@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title></title>
+		<link rel="stylesheet" href="../css/reset.css">
+		<link rel="stylesheet" href="../layui/css/layui.css">
+		<link rel="stylesheet" href="../css/public.css">
+		<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.css">
+		<style>
+			.container {
+				height: 100%;
+			}
+			.content {
+				height: 100%;
+				width: 100%;
+				font-size: 0;
+			}
+			.side-outer {			/*通过嵌套外层设置overflow:hidden,里层设置宽度超出外层17px(滚动条的宽度)从而隐藏滚动条*/
+				width: 200px;
+				overflow: hidden;
+				height: 100%;
+				display: inline-block;
+			}
+			.side-wrapper {
+				height: 100%;
+				width: calc(100% + 17px);
+				/* width: calc(100% + 20px); */
+				vertical-align: top;
+				background-color: #272b32;
+				overflow: auto;
+			}
+			.iframe-wrapper {
+				height: 100%;
+				width: calc(100% - 200px);
+				display: inline-block;
+			}
+			.iframe-wrapper>iframe {
+				height: 100%;
+				width: 100%
+				
+			}
+			.layui-logo {
+				cursor: pointer;
+			}
+			.footer {
+				width: 100%;
+				left: 0 !important;
+			}
+			.file-wrapper {
+				
+			}
+			.file-wrapper>button {
+				display: block;
+			}
+			.file-wrapper>span {
+				padding: 0;
+			}
+			/* .layui-table-grid-down{
+				display: none;
+			} */
+		</style>
+	</head>
+	<body class="layui-layout-body">
+	<!-- *@author 侯成昊
+		*@company 豆趣（山东）科技有限公司
+		*@E-mail 824099815@qq.com
+		*@QQ 824099815
+	-->
+	
+		<div class="layui-layout layui-layout-admin container layui-row">
+			<div class="content layui-col-xs12 layui-col-sm12 layui-col-md12">
+				<div class = "side-outer">
+					<div class="side-wrapper">
+						<ul class="layui-nav layui-nav-tree" lay-filter="test">
+						<!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
+							<li class="layui-nav-item layui-nav-itemed">
+								<a href="javascript:;">设备基础管理</a>
+								<dl class="layui-nav-child">
+									<dd class="layui-this"><a href="javascript:;" class="device-file">设备档案</a></dd>
+									<dd><a href="javascript:;" class="device-monitoring">设备监控</a></dd>
+									<dd><a href="javascript:;" class="remote-unlock">远程开箱</a></dd>
+									<dd><a href="javascript:;" class="device-install">设备安装</a></dd>
+									<dd>
+										<a href="javascript:;">设备移动</a>
+										<dl class="layui-nav-child">
+											<dd><a href="javascript:;" class="device-move-plan">移动计划</a></dd>
+											<dd><a href="javascript:;" class="device-move-order">移动工单</a></dd>
+											<dd><a href="javascript:;" class="device-move-log">移动记录</a></dd>
+											
+										</dl>
+									</dd>
+									<dd>
+										<a href="javascript:;">设备报废</a>
+										<dl class="layui-nav-child">
+											<dd><a href="javascript:;" class="device-scrap-plan">报废计划</a></dd>
+											<dd><a href="javascript:;" class="device-scrap-order">报废工单</a></dd>
+											<dd><a href="javascript:;" class="device-scrap-log">报废记录</a></dd>
+											
+										</dl>
+									</dd>
+									<dd><a href="javascript:;">设备折旧</a></dd>
+								</dl>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;">设备维护管理</a>
+								<dl class="layui-nav-child">
+									<dd><a href="javascript:;" class="fault-repairs">故障报修</a></dd>
+									<dd><a href="javascript:;" class="maintain-order">维修工单</a></dd>
+									<dd><a href="javascript:;" class="maintain-log">维修记录</a></dd>
+									<dd><a href="javascript:;" class="maintain-repository">维修知识库</a></dd>
+								</dl>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;">设备保养管理</a>
+								<dl class="layui-nav-child">
+									<dd><a href="javascript:;" class="inspection-plan">巡检计划</a></dd>
+									<dd><a href="javascript:;" class="inspection-order">巡检工单</a></dd>
+									<dd><a href="javascript:;" class="inspection-log">巡检记录</a></dd>
+									<dd><a href="javascript:;" class="inspection-require">巡检要求</a></dd>
+								</dl>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;">拓展业务</a>
+								<dl class="layui-nav-child">
+									<dd><a href="javascript:;" class="put-in-ad">广告投放</a></dd>
+									<dd><a href="javascript:;" class="LCD-ad">液晶屏广告</a></dd>
+									<dd>
+										<a href="javascript:;">箱体广告</a>
+										<dl class="layui-nav-child">
+											<dd><a href="javascript:;" class="shell-ad">类型列表</a></dd>
+											<dd><a href="javascript:;" class="shell-ad-order">工单列表</a></dd>
+										</dl>
+									</dd>
+									<dd><a href="javascript:;" class="APP-ad">手机端广告</a></dd>
+									<dd><a href="javascript:;" class="put-in-ad-log">投放记录</a></dd>
+								</dl>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;">人员管理</a>
+								<dl class="layui-nav-child">
+									<dd><a href="javascript:;" class="maintain-roster">维修值班表</a></dd>
+									<dd><a href="javascript:;" class="staff-deploy">人员调配</a></dd>
+								</dl>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="iframe-wrapper">
+					<iframe src="device-basics-admin/device-file.html" frameborder="0"></iframe>
+				</div>
+			</div>
+		</div>
+
+		<script src="../js/jQuery-3.4.0.js"></script>
+		<script src="../js/jquery.cookie.js"></script>
+		<script src="../layui/layui.js"></script>
+		
+		<script>
+			layui.use(['element', 'laypage', 'layer', 'form', 'laydate', 'table', 'upload'], function() {
+				var $ = layui.jquery,
+					element = layui.element,
+					laypage = layui.laypage,
+					form = layui.form,
+					layer = layui.layer,
+					table = layui.table,
+					upload = layui.upload;
+
+				$('.side-wrapper').click(function (e) {
+					var $target = $(e.target);
+					switch($target.attr('class')) {
+						// 设备基础管理
+						case "device-file" :
+							toggleIframe('device-basics-admin/device-file.html');
+							break;
+						case "device-monitoring" :
+							toggleIframe('device-basics-admin/device-monitoring.html');
+							break;
+						case "remote-unlock" :
+							toggleIframe('device-basics-admin/remote-unlock.html');
+							break;
+						case "device-install" :
+							toggleIframe('device-basics-admin/device-install.html')
+							break;
+						// 设备移动
+						case "device-move-plan" :
+							toggleIframe('device-move/device-move-plan.html');
+							break;
+						case "device-move-order" :
+							toggleIframe('device-move/device-move-order.html');
+							break;
+						case "device-move-log" :
+							toggleIframe('device-move/device-move-log.html');
+							break;
+							
+						// 设备报废
+						case "device-scrap-plan" :
+							toggleIframe('device-scrap/device-scrap-plan.html')
+							break;
+						case "device-scrap-order" :
+							toggleIframe('device-scrap/device-scrap-order.html');
+							break;
+						case "device-scrap-log" :
+							toggleIframe('device-scrap/device-scrap-log.html');
+							break;
+							
+							
+							
+							
+						// 设备维护管理
+						case "fault-repairs" :
+							toggleIframe('device-maintain/fault-repairs.html');
+							break;
+						case "maintain-order" :
+							toggleIframe('device-maintain/maintain-order.html');
+							break;
+						case "maintain-log" :
+							toggleIframe('device-maintain/maintain-log.html');
+							break;
+						case "maintain-repository" :
+						toggleIframe('device-maintain/maintain-repository.html');
+						break;
+						
+						// 设备保养管理
+						case "inspection-plan" :
+							toggleIframe('device-inspection/inspection-plan.html');
+							break;
+						case "inspection-order" :
+							toggleIframe('device-inspection/inspection-order.html');
+							break;
+						case "inspection-log" :
+							toggleIframe('device-inspection/inspection-log.html');
+							break;
+						case "inspection-require" :
+							toggleIframe('device-inspection/inspection-require.html');
+							break;
+						
+						
+							
+						// 拓展业务
+						case "put-in-ad" :
+							toggleIframe('expand-business/put-in-ad.html');
+							break;
+						case "LCD-ad" :
+							toggleIframe('expand-business/LCD-ad.html');
+							break;
+						case "APP-ad" :
+							toggleIframe('expand-business/APP-ad.html');
+							break;
+						case "shell-ad" :
+							toggleIframe('expand-business/shell-ad.html');
+							break;
+						case "shell-ad-order" :
+							toggleIframe('expand-business/shell-ad-order.html');
+							break;
+						case "put-in-ad-log":
+							toggleIframe('expand-business/put-in-ad-log.html');
+							break;
+							
+						
+						// 人员管理
+						case "maintain-roster" :
+							toggleIframe('staff-admin/maintain-roster.html');
+							break;
+						case "staff-deploy" :
+							toggleIframe('staff-admin/staff-deploy.html');
+							break;
+						
+						
+						default :
+						
+					}
+					// alert(111);
+					
+					
+				
+				}) ;
+
+			
+				
+
+
+
+				
+
+			});
+			
+			
+			function toggleIframe (url) {
+				$('iframe').attr('src', url);
+			}
+			
+			
+		</script>
+	</body>
+</html>

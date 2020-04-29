@@ -1,0 +1,41 @@
+{
+	"code": 0,
+	"msg": "",
+	"count": 1000,
+	"data": [{
+		"id": 10000,
+		"deviceNum": "000000",
+		"deviceType": "智能快递柜",
+		"oldAddress": "山东省济南市历下区舜泰广场6号楼",
+		"newAddress": "山东省济南市历下区舜泰广场10号楼",
+		"moveOne": "张三",
+		"static": "进行中",
+		"createTime": "2020/4/21",
+		"expectTime": "2020/4/23"
+	},
+	{
+		"id": 10001,
+		"deviceNum": "000000",
+		"deviceType": "智能快递柜",
+		"oldAddress": "山东省济南市历下区舜泰广场10号楼",
+		"newAddress": "山东省济南市历下区汉峪金谷1号楼",
+		"moveOne": "张三",
+		"static": "进行中",
+		"createTime": "2020/4/22",
+		"expectTime": "2020/4/24"
+	},
+	{
+		"id": 10002,
+		"deviceNum": "000000",
+		"deviceType": "智能快递柜",
+		"oldAddress": "山东省济南市历下区舜泰广场10号楼",
+		"newAddress": "山东省济南市历下区汉峪金谷3号楼",
+		"moveOne": "张三",
+		"static": "进行中",
+		"createTime": "2020/4/23",
+		"expectTime": "2020/4/25"
+	}
+	
+	
+	]
+}

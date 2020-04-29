@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>投放详情</title>
+		<link rel="stylesheet" href="../../css/reset.css">
+		<link rel="stylesheet" href="../../layui/css/layui.css">
+		<link rel="stylesheet" href="../../css/public.css">
+		<link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.css">
+		<style>
+			body {
+				box-sizing: border-box;
+				/* overflow: auto; */
+				/* font-size: 0; */
+				overflow: hidden;
+			}
+			.cancel {
+				margin: 10px 0 0 10px;
+			}
+		</style>
+	</head>
+	<body>
+	<!-- *@author 侯成昊
+		*@company 豆趣（山东）科技有限公司
+		*@E-mail 824099815@qq.com
+		*@QQ 824099815
+	-->
+	
+		
+		<button class="layui-btn cancel">&lt;&lt;&lt;</button>
+		<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+			<ul class="layui-tab-title">
+				<li class="layui-this">已投放设备</li>
+				<li>空余设备</li>
+			</ul>
+			<div class="layui-tab-content">
+				<div class="layui-tab-item layui-show">
+					<table id="target1" lay-filter="target1"></table>
+				</div>
+				<div class="layui-tab-item">
+					<table id="target2" lay-filter="target2"></table>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<script src="../../js/jQuery-3.4.0.js"></script>
+		<script src="../../js/jquery.cookie.js"></script>
+		<script src="../../layui/layui.js"></script>
+		<script type="text/html" id="backBtn">
+			
+			<a class="layui-btn layui-btn-xs " lay-event="pass">通过</a>
+		</script>
+		<script>
+			layui.use(['element', 'laypage', 'layer', 'form', 'laydate', 'table', 'upload'], function() {
+				var $ = layui.jquery,
+					element = layui.element,
+					laypage = layui.laypage,
+					form = layui.form,
+					layer = layui.layer,
+					table = layui.table,
+					upload = layui.upload;
+
+				
+				//渲染表格
+				table.render({
+					elem: '#target1',
+					page: true,
+					height: 'full-150',
+					url: '../../json/LCDAdPutDetail.json',
+					request: {
+						pageName: 'pageNum' //页码的参数名称，默认：page
+						,limitName: 'pageSize' //每页数据量的参数名，默认：limit
+					},
+					cols: [
+						[{
+								field: 'deviceNum',
+								title: '设备编号',
+								align: 'center',
+								minWidth: 100
+							},{
+								field: 'deviceType',
+								title: '设备类型',
+								align: 'center',
+								minWidth: 100
+							}, {
+								field: 'position',
+								title: '设备位置',
+								align: 'center',
+								minWidth: 100
+							},{
+								field: 'putCounts',
+								title: '投放数量',
+								align: 'center',
+								minWidth: 100
+							}
+						],
+					]
+					
+				});
+
+				table.on('tool(target1)', function(obj){
+					var data = obj.data;
+					
+				});
+
+
+			//渲染表格
+			table.render({
+				elem: '#target2',
+				page: true,
+				height: 'full-150',
+				url: '../../json/LCDAdNoPutDetail.json',
+				request: {
+					pageName: 'pageNum' //页码的参数名称，默认：page
+					,limitName: 'pageSize' //每页数据量的参数名，默认：limit
+				},
+				cols: [
+					[{
+							field: 'deviceNum',
+							title: '设备编号',
+							align: 'center',
+							minWidth: 100
+						},{
+							field: 'deviceType',
+							title: '设备类型',
+							align: 'center',
+							minWidth: 100
+						}, {
+							field: 'position',
+							title: '设备位置',
+							align: 'center',
+							minWidth: 100
+						},{
+							field: 'putCounts',
+							title: '投放数量',
+							align: 'center',
+							minWidth: 100
+						}
+					],
+				]
+				
+			});
+
+			$('.cancel').click(function() {
+				history.go(-1);
+			});
+			
+			
+			
+			
+			});
+		</script>
+	</body>
+</html>

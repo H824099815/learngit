@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>箱格日志</title>
+		<link rel="stylesheet" href="../../css/reset.css">
+		<link rel="stylesheet" href="../../layui/css/layui.css">
+		<link rel="stylesheet" href="../../css/public.css">
+		<link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.css">
+		<style>
+			body {
+				box-sizing: border-box;
+				/* overflow: auto; */
+				/* font-size: 0; */
+			}
+			.cancel {
+				margin: 10px 0 0 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- *@author 侯成昊
+			*@company 豆趣（山东）科技有限公司
+			*@E-mail 824099815@qq.com
+			*@QQ 824099815
+		-->
+	
+		<button class="layui-btn cancel">&lt;&lt;&lt;</button>
+		<table id="target" lay-filter="target"></table>
+		
+		
+		
+		<script src="../../js/jQuery-3.4.0.js"></script>
+		<script src="../../js/jquery.cookie.js"></script>
+		<script src="../../layui/layui.js"></script>
+		
+		<script>
+			layui.use(['element', 'laypage', 'layer', 'form', 'laydate', 'table', 'upload'], function() {
+				var $ = layui.jquery,
+					element = layui.element,
+					laypage = layui.laypage,
+					form = layui.form,
+					layer = layui.layer,
+					table = layui.table,
+					upload = layui.upload;
+
+				
+				//渲染表格
+				table.render({
+					elem: '#target',
+					page: true,
+					height: 'full-70',
+					url: '../../json/boxLog.json',
+					request: {
+						pageName: 'pageNum' //页码的参数名称，默认：page
+							,
+						limitName: 'pageSize' //每页数据量的参数名，默认：limit
+					},
+					cols: [
+						[{
+								field: 'operation',
+								title: '操作',
+								align: 'center',
+								minWidth: 100
+							} //width 支持：数字、百分比和不填写。你还可以通过 minWidth 参数局部定义当前单元格的最小宽度，layui 2.2.1 新增
+							, {
+								field: 'business',
+								title: '业务类型',
+								align: 'center',
+								minWidth: 100
+							}, 
+							{
+								field: 'time',
+								title: '时间',
+								align: 'center',
+								minWidth: 100
+							}
+						],
+					]
+					
+				});
+
+				
+				
+				
+				$('.cancel').click(function() {
+					history.go(-1);
+				})
+
+
+
+
+			});
+		</script>
+	</body>
+</html>

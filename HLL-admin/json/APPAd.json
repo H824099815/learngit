@@ -1,0 +1,56 @@
+{
+	"code": 0,
+	"msg": "",
+	"count": 1000,
+	"data": [{
+		"id": 10000,
+		"deviceType": "手机端",
+		"adType": "APP首页轮播广告",
+		"ratio" : "7:3",
+		"fileSize" : "500k<,<5000k"
+	},
+	{
+		"id": 10002,
+		"deviceType": "手机端",
+		"adType": "短信通知后缀",
+		"ratio" : "-",
+		"fileSize" : "-"
+	},
+	{
+		"id": 10003,
+		"deviceType": "手机端",
+		"adType": "微信取件通知广告",
+		"ratio" : "-",
+		"fileSize" : "-"
+	},
+	{
+		"id": 10004,
+		"deviceType": "手机端",
+		"adType": "微信取出通知广告",
+		"ratio" : "-",
+		"fileSize" : "-"
+	},
+	{
+		"id": 10005,
+		"deviceType": "手机端",
+		"adType": "微信滞留件通知广告",
+		"ratio" : "-",
+		"fileSize" : "-"
+	},
+	{
+		"id": 10006,
+		"deviceType": "手机端",
+		"adType": "微信扫码取件跳转广告",
+		"ratio" : "-",
+		"fileSize" : "-"
+	},
+	{
+		"id": 10007,
+		"deviceType": "手机端",
+		"adType": "微信公众号推送广告",
+		"ratio" : "-",
+		"fileSize" : "-"
+	}
+	
+	]
+}

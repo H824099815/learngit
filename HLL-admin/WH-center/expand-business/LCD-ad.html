@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>液晶屏广告</title>
+		<link rel="stylesheet" href="../../css/reset.css">
+		<link rel="stylesheet" href="../../layui/css/layui.css">
+		<link rel="stylesheet" href="../../css/public.css">
+		<link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.css">
+		<style>
+			body {
+				box-sizing: border-box;
+				/* overflow: auto; */
+				/* font-size: 0; */
+			}
+			.add {
+				margin: 10px 0 0 10px;
+			}
+			
+			.layui-layer-content {
+				box-sizing: border-box;
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+	<!-- *@author 侯成昊
+		*@company 豆趣（山东）科技有限公司
+		*@E-mail 824099815@qq.com
+		*@QQ 824099815
+	-->
+	
+		
+		<button class="layui-btn layui-right add">新增类型</button>
+		<table id="target" lay-filter="target"></table>
+		
+		
+		
+		<script src="../../js/jQuery-3.4.0.js"></script>
+		<script src="../../js/jquery.cookie.js"></script>
+		<script src="../../layui/layui.js"></script>
+		<script type="text/html" id="backBtn">
+			<a class="layui-btn layui-btn-xs layui-bg-red" lay-event="delete">删除</a>
+			<a class="layui-btn layui-btn-xs " lay-event="detail">详情</a>
+		</script>
+		<script>
+			layui.use(['element', 'laypage', 'layer', 'form', 'laydate', 'table', 'upload'], function() {
+				var $ = layui.jquery,
+					element = layui.element,
+					laypage = layui.laypage,
+					form = layui.form,
+					layer = layui.layer,
+					table = layui.table,
+					upload = layui.upload;
+
+				
+				//渲染表格
+				table.render({
+					elem: '#target',
+					page: true,
+					height: 'full-70',
+					url: '../../json/LCDAd.json',
+					request: {
+						pageName: 'pageNum' //页码的参数名称，默认：page
+						,limitName: 'pageSize' //每页数据量的参数名，默认：limit
+					},
+					cols: [
+						[{
+								field: 'deviceType',
+								title: '设备类型',
+								align: 'center',
+								minWidth: 100
+							},{
+								field: 'adType',
+								title: '广告类型',
+								align: 'center',
+								minWidth: 100
+							},{
+								field: 'ratio',
+								title: '图片/视频比例',
+								align: 'center',
+								minWidth: 100
+							},{
+								field: 'fileSize',
+								title: '文件大小',
+								align: 'center',
+								minWidth: 100
+							},  {
+								field: 'putCounts',
+								title: '已投设备',
+								align: 'center',
+								minWidth: 100
+							},{
+								field: 'unPut',
+								title: '未投设备',
+								align: 'center',
+								minWidth: 100
+							},{
+								align: 'center',
+								title: '操作',
+								toolbar: '#backBtn',
+								fixed: 'right',
+								minWidth: 130
+							}
+						],
+					]
+					
+				});
+
+				table.on('tool(target)', function(obj){
+					var data = obj.data;
+					if(obj.event === 'detail') {
+						window.location = 'LCD-put-detail.html'
+					}
+					
+				});
+				
+				$('.add').click(function() {
+					layer.open({
+						type: 1,
+						area: ['60%', '65%'], //宽高
+						content: '<form class="layui-form"><div class="layui-form-item"><label class="layui-form-label">名称</label><div class="layui-input-block"><input type="text" class="layui-input" id="" placeholder="请输入类型名称"></div></div><div class="layui-form-item"><label class="layui-form-label">文件类型</label><div class="layui-input-block"><input type="radio" name="sex" value="图片" title="图片" checked><input type="radio" name="sex" value="视频" title="视频"></div></div><div class="layui-form-item"><label class="layui-form-label">文件比例</label><div class="layui-input-block"><input type="text" class="layui-input" id="" placeholder="请输入文件比例"></div></div><div class="layui-form-item"><label class="layui-form-label">最小限制(k)</label><div class="layui-input-block"><input type="text" class="layui-input" id="" placeholder="请输入文件最小限制"></div></div><div class="layui-form-item"><label class="layui-form-label">最大限制(k)</label><div class="layui-input-block"><input type="text" class="layui-input" id="" placeholder="请输入文件最大限制"></div></div><div class="layui-form-item"><div class="layui-input-block"><button type="submit" class="layui-btn" lay-submit="" lay-filter="submit">立即提交</button><button type="reset" class="layui-btn layui-btn-primary">重置</button></div></div></form>'
+					});
+					form.render();
+				})
+
+
+
+
+			});
+		</script>
+	</body>
+</html>

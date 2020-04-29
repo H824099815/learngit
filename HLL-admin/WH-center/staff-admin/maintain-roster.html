@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>维修值班表</title>
+		<link rel="stylesheet" href="../../css/reset.css">
+		<link rel="stylesheet" href="../../layui/css/layui.css">
+		<link rel="stylesheet" href="../../css/public.css">
+		<link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.css">
+		<style>
+			body {
+				box-sizing: border-box;
+				/* overflow: auto; */
+				/* font-size: 0; */
+			}
+			.add-plan {
+				margin: 10px 0 0 10px;
+			}
+			
+			.layui-layer-content {
+				box-sizing: border-box;
+				padding: 10px;
+			}
+			
+		</style>
+	</head>
+	<body>
+	<!-- *@author 侯成昊
+		*@company 豆趣（山东）科技有限公司
+		*@E-mail 824099815@qq.com
+		*@QQ 824099815
+	-->
+	
+		<button class="layui-btn layui-right add-plan">新增计划</button>
+		<table id="target" lay-filter="target"></table>
+		
+		
+		
+		<script src="../../js/jQuery-3.4.0.js"></script>
+		<script src="../../js/jquery.cookie.js"></script>
+		<script src="../../layui/layui.js"></script>
+		<script type="text/html" id="backBtn">
+			<a class="layui-btn layui-btn-xs layui-bg-red" lay-event="delete">删除</a>
+			<a class="layui-btn layui-btn-xs " lay-event="edit">编辑</a>
+		</script>
+		<script>
+			layui.config({
+				base: '../../mods/'
+				, version: '1.0'
+			});
+			
+			layui.use(['element', 'laypage', 'layer', 'form', 'laydate', 'table', 'upload','layarea'], function() {
+				var $ = layui.jquery,
+					element = layui.element,
+					laypage = layui.laypage,
+					form = layui.form,
+					layer = layui.layer,
+					table = layui.table,
+					upload = layui.upload,
+					layarea = layui.layarea,
+					laydate = layui.laydate;
+
+				
+				//渲染表格
+				table.render({
+					elem: '#target',
+					page: true,
+					height: 'full-70',
+					url: '../../json/maintainRoster.json',
+					request: {
+						pageName: 'pageNum' //页码的参数名称，默认：page
+						,limitName: 'pageSize' //每页数据量的参数名，默认：limit
+					},
+					cols: [
+						[{
+								field: 'jobNum',
+								title: '工号',
+								align: 'center',
+								minWidth: 100
+							},{
+								field: 'name',
+								title: '姓名',
+								align: 'center',
+								minWidth: 100
+							}, {
+								field: 'stateTime',
+								title: '开始时间',
+								align: 'center',
+								minWidth: 100
+							}, {
+								field: 'EndTime',
+								title: '结束时间',
+								align: 'center',
+								minWidth: 100
+							},{
+								field: 'area',
+								title: '值班区域',
+								align: 'center',
+								minWidth: 100
+							},{
+								align: 'center',
+								title: '操作',
+								toolbar: '#backBtn',
+								fixed: 'right',
+								minWidth: 130
+							}
+						],
+					]
+					
+				});
+				// 监听表格事件
+				table.on('tool(target)', function(obj){
+					var data = obj.data;
+					if(obj.event === 'edit') {
+						layer.open({
+							type: 1,
+							area: ['60%', '70%'], //宽高
+							content: '<form class="layui-form"><div class="layui-form-item" id="area-picker"><div class="layui-form-label">值班区域</div><div class="layui-input-inline"><select name="province" class="province-selector" data-value="山东省" lay-filter="province-1"><option value="">请选择省</option></select></div><div class="layui-input-inline"><select name="city" class="city-selector" data-value="济南市" lay-filter="city-1"><option value="">请选择市</option></select></div><div class="layui-input-inline"><select name="county" class="county-selector" data-value="历下区" lay-filter="county-1"><option value="">请选择区</option></select></div></div><div class="layui-form-item"><label class="layui-form-label">指派给</label><div class="layui-input-block"><select name="interest" lay-filter="aihao" lay-search=""><option value=""></option><option value="0">张三</option><option value="1">李四</option><option value="2">王五</option><option value="3">赵华</option></select></div></div><div class="layui-form-item"><label class="layui-form-label">起止时间</label><div class="layui-input-inline"><input type="text" class="layui-input" id="startTime" placeholder="请选择开始时间"></div><div class="layui-input-inline"><input type="text" class="layui-input" id="endTime" placeholder="请选择开始时间"></div></div><div class="layui-form-item"><div class="layui-input-block"><button type="submit" class="layui-btn" lay-submit="" lay-filter="submit">立即提交</button><button type="reset" class="layui-btn layui-btn-primary">重置</button></div></div></form>'
+						});
+						form.render();
+						layarea.render({
+							elem: '#area-picker',
+							change: function (res) {
+								//选择结果
+								console.log(res);
+						    }
+						});
+						laydate.render({
+							elem: '#startTime'
+						});
+						laydate.render({
+							elem: '#endTime'
+						});
+					}
+				});
+			$('.add-plan').click(function() {
+				//页面层
+				
+				layer.open({
+					type: 1,
+					area: ['60%', '70%'], //宽高
+					content: '<form class="layui-form"><div class="layui-form-item" id="area-picker"><div class="layui-form-label">值班区域</div><div class="layui-input-inline"><select name="province" class="province-selector" data-value="山东省" lay-filter="province-1"><option value="">请选择省</option></select></div><div class="layui-input-inline"><select name="city" class="city-selector" data-value="济南市" lay-filter="city-1"><option value="">请选择市</option></select></div><div class="layui-input-inline"><select name="county" class="county-selector" data-value="历下区" lay-filter="county-1"><option value="">请选择区</option></select></div></div><div class="layui-form-item"><label class="layui-form-label">指派给</label><div class="layui-input-block"><select name="interest" lay-filter="aihao" lay-search=""><option value=""></option><option value="0">张三</option><option value="1">李四</option><option value="2">王五</option><option value="3">赵华</option></select></div></div><div class="layui-form-item"><label class="layui-form-label">起止时间</label><div class="layui-input-inline"><input type="text" class="layui-input" id="startTime" placeholder="请选择开始时间"></div><div class="layui-input-inline"><input type="text" class="layui-input" id="endTime" placeholder="请选择开始时间"></div></div><div class="layui-form-item"><div class="layui-input-block"><button type="submit" class="layui-btn" lay-submit="" lay-filter="submit">立即提交</button><button type="reset" class="layui-btn layui-btn-primary">重置</button></div></div></form>'
+				});
+				form.render();
+				layarea.render({
+					elem: '#area-picker',
+					change: function (res) {
+						//选择结果
+						console.log(res);
+				    }
+				});
+				laydate.render({
+					elem: '#startTime'
+				});
+				laydate.render({
+					elem: '#endTime'
+				});
+			})
+
+
+
+
+
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,304 @@
+/* 头部颜色 */
+.layui-layout-admin .layui-header {
+	background-color: #404553;
+}
+/* logo样式 */
+.layui-layout-admin .layui-logo {
+    color: #1E9FFF;
+    font-size: 16px
+}
+
+/* 导航彩条样式 */
+.layui-nav .layui-this:after, .layui-nav-bar, .layui-nav-tree .layui-nav-itemed:after {
+    background-color: #1E9FFF!important;
+}
+.layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this>a, .layui-nav-tree .layui-this>a:hover {
+	background-color: #1E9FFF!important;
+}
+
+
+
+/* 常用背景色 */
+.layui-bg-red {
+	background-color: #f56c6c !important
+}
+
+.layui-bg-orange {
+	background-color: #e6a23c !important
+}
+
+.layui-bg-green {
+	background-color: #67c23a !important
+}
+
+.layui-bg-cyan {
+	background-color: #2F4056 !important
+}
+
+.layui-bg-blue {
+	background-color: #409eff !important
+}
+
+.layui-bg-black {
+	background-color: #393D49 !important
+}
+
+.layui-bg-gray {
+	background-color: #909399 !important;
+	color: #fff !important
+}
+.layui-bg-black,
+.layui-bg-blue,
+.layui-bg-cyan,
+.layui-bg-green,
+.layui-bg-orange,
+.layui-bg-red {
+	color: #fff !important
+}
+
+
+/* 默认按钮样式 */
+.layui-btn {
+	display: inline-block;
+	line-height: 38px;
+	white-space: nowrap;
+	cursor: pointer;
+	background-color: #fff;
+	border: 1px solid #dcdfe6;
+	color: #606266;
+	text-align: center;
+	box-sizing: border-box;
+	outline: none;
+	transition: 0.1s;
+	font-weight: 500;
+	padding: 0 18px;
+	height: 38px;
+	font-size: 14px;
+	border-radius: 4px;
+}
+
+.layui-btn:hover {
+	opacity: .8;
+	filter: alpha(opacity=80);
+	color: #409eff;
+	border-color: #c6e2ff;
+	background-color: #ecf5ff;
+}
+
+.layui-btn-sm {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    font-size: 12px;
+}
+.layui-btn-xs {
+    height: 22px;
+    line-height: 22px;
+    padding: 0 5px;
+    font-size: 12px;
+}
+.layui-btn-lg {
+    height: 44px;
+    line-height: 44px;
+    padding: 0 25px;
+    font-size: 16px;
+}
+
+
+
+
+
+
+
+/* 选项卡样式 */
+	/* 字体样式 */
+	.layui-tab-brief>.layui-tab-title .layui-this {
+		color: #1E9FFF
+	}
+
+	/* 边框样式 */
+	.layui-tab-brief>.layui-tab-title .layui-this:after {
+		border: none;
+		border-radius: 0;
+		border-bottom: 2px solid #1E9FFF
+	}
+
+
+	/* 翻页样式 */
+	.layui-laypage .layui-laypage-curr .layui-laypage-em {
+		background-color: #1E9FFF
+	}
+	
+	
+/* 表单样式 */
+	/* 下拉框样式 */
+	.layui-form-select dl dd.layui-this {
+		background-color: #1E9FFF;
+		color: #fff
+	}
+	
+	/* 复选框样式 */
+	/* 复杂样式 */
+	.layui-form-checked span,
+	.layui-form-checked:hover span {
+		background-color: #1E9FFF
+	}
+	
+	.layui-form-checked i,
+	.layui-form-checked:hover i {
+		color: #1E9FFF
+	}
+	
+	/* 简单样式 */
+	.layui-form-checkbox[lay-skin=primary]:hover i {
+		border-color: #1E9FFF;
+		color: #fff
+	}
+	
+	.layui-form-checked[lay-skin=primary] i {
+		border-color: #1E9FFF !important;
+		background-color: #1E9FFF;
+		color: #fff
+	}
+/* 单选框样式 */
+.layui-form-radio>i:hover,
+.layui-form-radioed>i {
+	color: #1E9FFF
+}
+
+/* 开关样式 */
+.layui-form-onswitch {
+	border-color: #1E9FFF;
+	background-color: #1E9FFF
+}
+
+
+/* 多选下拉框样式 */
+.xm-select-parent dd .xm-cz:hover{color: #1E9FFF;}
+.xm-form-checkbox:hover > i {border-color: #1E9FFF;}
+.xm-form-checkbox > i {border: 1px solid #1E9FFF;}
+.xm-select-parent .xm-select-title div.xm-select-label>span {background-color: #1E9FFF;}
+.xm-form-selected .xm-select,.xm-form-selected .xm-select:hover {border-color: #1E9FFF!important}
+div[xm-select-skin] .xm-select-title div.xm-select-label>span {border: 1px solid #1E9FFF}
+.xm-select-parent dl dd.xm-select-this div i {border: none; color: #1E9FFF; font-size: 18px;}
+
+
+ .layui-tab-topline {
+   	padding: 0px;
+   	margin: 0px;
+   }
+
+   .layui-tab-topline .layui-tab-title {
+   	border: solid whitesmoke 0.0625rem;
+   }
+
+   .layui-tab-topline .layui-tab-title li {
+   	border: solid whitesmoke 0.0625rem;
+   }
+
+   .layui-tab-topline>.layui-tab-more li.layui-this:after,
+   .layui-tab-topline>.layui-tab-title .layui-this:after {
+   	border-top: 2px #5FB878 solid;
+   }
+
+   /*选项卡扩展样式*/
+   .layui-tab-button {
+   	padding: 0px;
+   	margin: 0px;
+   }
+
+   .layui-tab-button .layui-tab-title {
+   	height: 40px!important;
+   	line-height: 40px!important;
+   	border: 0px;
+   	background-color: whitesmoke;
+   }
+
+   .layui-tab-button .layui-tab-title li {
+   	height: 32px!important;
+   	line-height: 32px!important;
+   	background: #fff;
+   	border-radius: 3px;
+   	margin-left: 8px;
+   	border: none;
+   }
+
+   .layui-tab-button .layui-tab-title li span {
+   	margin-right: 5px;
+   }
+
+   .layui-tab-button .layui-tab-title li:hover {
+   	color: dodgerblue;
+
+   }
+
+   /** 选中状态 */
+   .layui-tab-button>.layui-tab-title>.layui-this {
+   	color: dodgerblue!important;
+   	border: none !important;
+   	border-radius: 5px;
+   }
+
+   /** 选中后 */
+   .layui-tab-button .layui-this:after {
+   	border: none;
+   }
+
+   .layui-tab-title li .layui-tab-close {
+
+   	border-radius: 50px;
+   }
+
+   .layui-tab-title li .layui-tab-close:hover {
+
+   	border-radius: 50px;
+   	background-color: lightgray;
+   }
+   
+   
+   .layui-tab-circular {
+   				padding: 0px;
+   				margin: 0px;
+   			}
+   			
+   			.layui-tab-circular .layui-tab-title {
+   				height: 40px;
+   				line-height: 40px;
+   				border: 0px;
+   				background-color: whitesmoke!important;
+   			}
+   			
+   			.layui-tab-circular .layui-tab-title li {
+   				height: 32px;
+   				line-height: 32px;
+   				background: #fff;
+   				border-radius: 20px;
+   				margin-left: 8px;
+   				border: none;
+   			}
+   			
+   			.layui-tab-circular .layui-tab-title li span {
+   				margin-right: 5px;
+   			}
+   			
+   			.layui-tab-circular .layui-tab-title li:hover {
+   				color: dodgerblue;
+   			}
+   			
+   			/** 选中状态 */
+   			.layui-tab-circular .layui-this {
+   				color: dodgerblue!important;
+   				border: none !important;
+   				box-shadow: 0px 0px 5px gray;
+   			}
+   			
+   			/** 选中后 */
+   			.layui-tab-circular .layui-this:after {
+   				border: none;
+   			}
+
+/* laydate */
+
+.layui-laydate .layui-this {
+	background-color: #1E9FFF!important;
+}
